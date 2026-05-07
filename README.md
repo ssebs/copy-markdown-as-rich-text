@@ -8,7 +8,7 @@ A VSCode extension that converts selected markdown text to rich text and copies 
 - code block:
   - use monospace font
 - add context menu option to copy selection as Rich Text
-- add shortcut
+- add shortcut "CTRL+SHIFT+C" or "CMD+SHIFT+C" on mac
 
 ## Install
 
