@@ -11,7 +11,20 @@ A VSCode extension that converts selected markdown text to rich text and copies 
 
 ## Usage
 
-TBD
+1. Open a Markdown file (or any document with markdown content).
+2. Optionally select a range — if nothing is selected the whole file is converted.
+3. Run **Markdown: Copy as Rich Text** from the Command Palette (Ctrl+Shift+P).
+4. Paste into your destination app (Google Docs, Word, Outlook, Slack, etc.).
+
+## Settings
+
+- `copyMarkdownRichText.includeStyles` — include inline CSS in the copied HTML (default: `true`).
+- `copyMarkdownRichText.highlightCode` — syntax-highlight fenced code blocks (default: `true`).
+
+## Platform notes
+
+- **Windows / macOS**: works out of the box (uses built-in PowerShell / `osascript`).
+- **Linux**: requires `wl-clipboard` on Wayland (`sudo apt install wl-clipboard`) or `xclip` on X11 (`sudo apt install xclip`). The extension picks one automatically based on `$WAYLAND_DISPLAY`. Without either, it falls back to copying the raw HTML as plain text and shows a warning.
 
 ## Building
 

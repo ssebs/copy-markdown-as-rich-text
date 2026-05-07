@@ -2,28 +2,49 @@
   "name": "copy-markdown-as-rich-text",
   "displayName": "Copy Markdown as Rich Text",
   "description": "Converts selected markdown text to rich text and copies it to the clipboard so it can be pasted as formatted text into applications like Google Docs, Word, etc.",
-   "repository": {
+  "repository": {
     "type": "git",
     "url": "https://github.com/ssebs/copy-markdown-as-rich-text.git"
   },
   "publisher": "SebastianSafari",
   "version": "0.0.1",
   "engines": {
-    "vscode": "^1.118.0"
+    "vscode": "^1.105.0"
   },
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "copy-markdown-as-rich-text.copySelected",
-        "title": "Copy Selected Markdown as Rich Text"
+        "command": "markdown.copyAsRichText",
+        "title": "Markdown: Copy as Rich Text"
       }
-    ]
+    ],
+    "configuration": {
+      "title": "Copy Markdown as Rich Text",
+      "properties": {
+        "copyMarkdownRichText.includeStyles": {
+          "type": "boolean",
+          "default": true,
+          "description": "Include inline CSS in the copied HTML."
+        },
+        "copyMarkdownRichText.highlightCode": {
+          "type": "boolean",
+          "default": true,
+          "description": "Syntax-highlight fenced code blocks via highlight.js."
+        }
+      }
+    }
   },
+  "keywords": [
+    "markdown",
+    "rich text",
+    "clipboard",
+    "copy",
+    "formatted"
+  ],
   "scripts": {
     "vscode:prepublish": "npm run package",
     "compile": "webpack",
@@ -36,16 +57,21 @@
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/vscode": "^1.118.0",
+    "@types/markdown-it": "^14.1.2",
     "@types/mocha": "^10.0.10",
     "@types/node": "22.x",
-    "typescript-eslint": "^8.56.1",
-    "eslint": "^9.39.3",
-    "typescript": "^5.9.3",
-    "ts-loader": "^9.5.4",
-    "webpack": "^5.105.3",
-    "webpack-cli": "^6.0.1",
+    "@types/vscode": "^1.118.0",
     "@vscode/test-cli": "^0.0.12",
-    "@vscode/test-electron": "^2.5.2"
+    "@vscode/test-electron": "^2.5.2",
+    "eslint": "^9.39.3",
+    "ts-loader": "^9.5.4",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.56.1",
+    "webpack": "^5.105.3",
+    "webpack-cli": "^6.0.1"
+  },
+  "dependencies": {
+    "highlight.js": "^11.11.1",
+    "markdown-it": "^14.1.1"
   }
 }

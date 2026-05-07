@@ -1,26 +1,40 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
+import { renderMarkdown } from './render';
+import { writeHtmlToClipboard } from './clipboard';
 
-// This method is called when your extension is activated
-// Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
-
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "copy-markdown-as-rich-text" is now active!');
-
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
-	const disposable = vscode.commands.registerCommand('copy-markdown-as-rich-text.helloWorld', () => {
-		// The code you place here will be executed every time your command is executed
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from copy-markdown-as-rich-text!');
-	});
-
-	context.subscriptions.push(disposable);
+  const disposable = vscode.commands.registerCommand('markdown.copyAsRichText', copyAsRichText);
+  context.subscriptions.push(disposable);
 }
 
-// This method is called when your extension is deactivated
 export function deactivate() {}
+
+async function copyAsRichText() {
+  const editor = vscode.window.activeTextEditor;
+  if (!editor) {
+    vscode.window.showWarningMessage('No active editor.');
+    return;
+  }
+
+  const selection = editor.selection;
+  const markdown = selection.isEmpty
+    ? editor.document.getText()
+    : editor.document.getText(selection);
+
+  const config = vscode.workspace.getConfiguration('copyMarkdownRichText');
+  const html = renderMarkdown(markdown, {
+    includeStyles: config.get<boolean>('includeStyles', true),
+    highlightCode: config.get<boolean>('highlightCode', true),
+  });
+
+  try {
+    await writeHtmlToClipboard(html, markdown);
+    vscode.window.showInformationMessage('Copied as rich text!');
+  } catch (err) {
+    await vscode.env.clipboard.writeText(html);
+    const hint = process.platform === 'linux'
+      ? 'Install `wl-clipboard` (Wayland) or `xclip` (X11) for rich-text clipboard support.'
+      : `Native clipboard write failed: ${(err as Error).message}`;
+    vscode.window.showWarningMessage(`Copied as plain HTML instead. ${hint}`);
+  }
+}
