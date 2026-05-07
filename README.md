@@ -33,4 +33,4 @@ TBD
 
 ## LICENSE
 
-[Apache v2](https://raw.githubusercontent.com/ssebs/todo-sidebar/main/LICENSE)
+[Apache v2](https://raw.githubusercontent.com/ssebs/copy-markdown-as-rich-text/main/LICENSE)
