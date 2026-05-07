@@ -22,6 +22,23 @@
         "title": "Markdown: Copy as Rich Text"
       }
     ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "markdown.copyAsRichText",
+          "when": "editorTextFocus && editorLangId == markdown",
+          "group": "9_cutcopypaste"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "markdown.copyAsRichText",
+        "key": "ctrl+shift+c",
+        "mac": "cmd+shift+c",
+        "when": "editorTextFocus && editorLangId == markdown"
+      }
+    ],
     "configuration": {
       "title": "Copy Markdown as Rich Text",
       "properties": {

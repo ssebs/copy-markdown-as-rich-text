@@ -29,8 +29,9 @@ function highlight(code: string, lang: string): string {
 const STYLES = `
   body { font-family: -apple-system, Segoe UI, Helvetica, Arial, sans-serif; line-height: 1.5; }
   h1, h2, h3, h4 { margin-top: 1.2em; margin-bottom: 0.4em; }
-  code { padding: 0.1em 0.3em; border-radius: 3px; font-family: Consolas, Monaco, monospace; }
-  pre { padding: 12px; border-radius: 4px; overflow-x: auto; }
+  code, kbd, samp { font-family: monospace, monospace; }
+  code { padding: 0.1em 0.3em; border-radius: 3px; }
+  pre { padding: 12px; border-radius: 4px; overflow-x: auto; font-family: monospace, monospace; }
   pre code { padding: 0; }
   blockquote { border-left: 4px solid currentColor; margin: 0; padding: 0 1em; }
   table { border-collapse: collapse; }

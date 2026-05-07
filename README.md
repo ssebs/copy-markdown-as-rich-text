@@ -5,10 +5,7 @@ A VSCode extension that converts selected markdown text to rich text and copies 
 > Sorry, this is a vibe-coded app. I just wanted the feature 🤷‍♀️
 
 ## TODO
-- code block:
-  - use monospace font
-- add context menu option to copy selection as Rich Text
-- add shortcut "CTRL+SHIFT+C" or "CMD+SHIFT+C" on mac
+- screen recording
 
 ## Install
 
@@ -20,8 +17,13 @@ A VSCode extension that converts selected markdown text to rich text and copies 
 
 1. Open a Markdown file (or any document with markdown content).
 2. Optionally select a range — if nothing is selected the whole file is converted.
-3. Run **Markdown: Copy as Rich Text** from the Command Palette (Ctrl+Shift+P).
+3. Run **Markdown: Copy as Rich Text** by:
+   - Pressing `Ctrl+Shift+C` (Windows/Linux) / `Cmd+Shift+C` (macOS), or
+   - Right-clicking and choosing **Markdown: Copy as Rich Text**, or
+   - Running it from the Command Palette (`Ctrl+Shift+P`).
 4. Paste into your destination app (Google Docs, Word, Outlook, Slack, etc.).
+
+The keybinding and context menu entry are scoped to markdown files only.
 
 ## Settings
 
