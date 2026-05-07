@@ -1,5 +1,7 @@
 # Copy Markdown as Rich Text
 
+[![.github/workflows/build.yml](https://github.com/ssebs/copy-markdown-as-rich-text/actions/workflows/build.yml/badge.svg)](https://github.com/ssebs/copy-markdown-as-rich-text/actions/workflows/build.yml) 
+
 A VSCode extension that converts selected markdown text to rich text and copies it to the clipboard so it can be pasted as formatted text into applications like Google Docs, Word, etc.
 
 > Sorry, this is a vibe-coded app. I just wanted the feature 🤷‍♀️
