@@ -239,6 +239,10 @@ function writeMac(html: string): Promise<void> {
 }
 
 function writeLinux(html: string): Promise<void> {
+  // Wayland → wl-copy; X11 → xclip. Users on Linux must have one installed.
+  if (process.env.WAYLAND_DISPLAY) {
+    return run('wl-copy', ['-t', 'text/html'], html);
+  }
   return run('xclip', ['-selection', 'clipboard', '-t', 'text/html'], html);
 }
 
@@ -350,7 +354,7 @@ async function copyAsRichText() {
   } catch (err) {
     await vscode.env.clipboard.writeText(html);
     const hint = process.platform === 'linux'
-      ? 'Install `xclip` for rich-text clipboard support.'
+      ? 'Install `wl-clipboard` (Wayland) or `xclip` (X11) for rich-text clipboard support.'
       : `Native clipboard write failed: ${(err as Error).message}`;
     vscode.window.showWarningMessage(`Copied as plain HTML instead. ${hint}`);
   }
@@ -400,7 +404,7 @@ Convert the current selection (or whole file) from Markdown to formatted rich te
 
 ## Platform notes
 - **Windows / macOS**: works out of the box.
-- **Linux**: requires `xclip` (`sudo apt install xclip` or distro equivalent). Without it, the extension falls back to copying raw HTML as plain text.
+- **Linux**: requires `wl-clipboard` on Wayland (`sudo apt install wl-clipboard`) or `xclip` on X11 (`sudo apt install xclip`). The extension auto-detects via `$WAYLAND_DISPLAY`. Without either, it falls back to copying raw HTML as plain text.
 
 ## Building / Packaging
 ```bash
