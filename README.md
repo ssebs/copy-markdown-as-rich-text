@@ -4,14 +4,15 @@ A VSCode extension that converts selected markdown text to rich text and copies 
 
 > Sorry, this is a vibe-coded app. I just wanted the feature 🤷‍♀️
 
-## TODO
-- screen recording
+## Demo
+> Showing regular copy & paste, and the new copy as rich text & paste
+
+![demo-video-v0.0.1](./img/demo-video-v0.0.1.webp)
 
 ## Install
 
-<!-- - [VSCode Marketplace](https://marketplace.visualstudio.com/items?itemName=SebastianSafari.copy-markdown-as-rich-text)
-- [Open-VSX Marketplace](https://open-vsx.org/extension/SebastianSafari/copy-markdown-as-rich-text) -->
-
+- [VSCode Marketplace](https://marketplace.visualstudio.com/items?itemName=SebastianSafari.copy-markdown-as-rich-text)
+- [Open-VSX Marketplace](https://open-vsx.org/extension/SebastianSafari/copy-markdown-as-rich-text)
 
 ## Usage
 
