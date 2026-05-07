@@ -2,6 +2,11 @@
   "name": "copy-markdown-as-rich-text",
   "displayName": "Copy Markdown as Rich Text",
   "description": "Converts selected markdown text to rich text and copies it to the clipboard so it can be pasted as formatted text into applications like Google Docs, Word, etc.",
+   "repository": {
+    "type": "git",
+    "url": "https://github.com/ssebs/copy-markdown-as-rich-text.git"
+  },
+  "publisher": "SebastianSafari",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.118.0"
